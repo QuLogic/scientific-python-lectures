@@ -11,15 +11,15 @@ import matplotlib.pyplot as plt
 size = 256, 16
 dpi = 72.0
 figsize = size[0] / float(dpi), size[1] / float(dpi)
-fig = plt.figure(figsize=figsize, dpi=dpi)
+fig, ax = plt.subplots(figsize=figsize, dpi=dpi, layout="constrained")
 fig.patch.set_alpha(0)
-plt.axes([0, 0, 1, 1], frameon=False)
+ax.set_frame_on(False)
 
 rng = np.random.default_rng()
 
 for i in range(1, 11):
     r, g, b = np.random.uniform(0, 1, 3)
-    plt.plot(
+    ax.plot(
         [
             i,
         ],
@@ -32,7 +32,8 @@ for i in range(1, 11):
         markeredgewidth=0.1,
         markeredgecolor=(0, 0, 0, 0.5),
     )
-plt.xlim(0, 11)
-plt.xticks([])
-plt.yticks([])
+ax.set_xlim(0, 11)
+ax.set_xticks([])
+ax.set_yticks([])
+
 plt.show()

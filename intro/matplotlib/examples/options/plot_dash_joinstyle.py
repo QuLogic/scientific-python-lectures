@@ -8,14 +8,14 @@ Example demoing the dash join style.
 import numpy as np
 import matplotlib.pyplot as plt
 
-size = 256, 16
+size = 256, 64
 dpi = 72.0
 figsize = size[0] / float(dpi), size[1] / float(dpi)
-fig = plt.figure(figsize=figsize, dpi=dpi)
+fig, ax = plt.subplots(figsize=figsize, dpi=dpi, layout="constrained")
 fig.patch.set_alpha(0)
-plt.axes([0, 0, 1, 1], frameon=False)
+ax.set_frame_on(False)
 
-plt.plot(
+ax.plot(
     np.arange(3),
     [0, 1, 0],
     color="blue",
@@ -23,7 +23,7 @@ plt.plot(
     linewidth=8,
     dash_joinstyle="miter",
 )
-plt.plot(
+ax.plot(
     4 + np.arange(3),
     [0, 1, 0],
     color="blue",
@@ -31,7 +31,7 @@ plt.plot(
     linewidth=8,
     dash_joinstyle="bevel",
 )
-plt.plot(
+ax.plot(
     8 + np.arange(3),
     [0, 1, 0],
     color="blue",
@@ -40,9 +40,9 @@ plt.plot(
     dash_joinstyle="round",
 )
 
-plt.xlim(0, 12)
-plt.ylim(-1, 2)
-plt.xticks([])
-plt.yticks([])
+ax.set_xlim(0, 12)
+ax.set_ylim(-1, 2)
+ax.set_xticks([])
+ax.set_yticks([])
 
 plt.show()

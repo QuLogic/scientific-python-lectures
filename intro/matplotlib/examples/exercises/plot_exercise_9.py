@@ -8,36 +8,31 @@ Exercise 9 with matplotlib.
 import numpy as np
 import matplotlib.pyplot as plt
 
-plt.figure(figsize=(8, 5), dpi=80)
-plt.subplot(111)
+fig, ax = plt.subplots(figsize=(8, 5), dpi=100)
 
 X = np.linspace(-np.pi, np.pi, 256, endpoint=True)
 C = np.cos(X)
 S = np.sin(X)
 
-plt.plot(X, C, color="blue", linewidth=2.5, linestyle="-", label="cosine")
-plt.plot(X, S, color="red", linewidth=2.5, linestyle="-", label="sine")
+ax.plot(X, C, color="blue", linewidth=2.5, linestyle="-", label="cosine")
+ax.plot(X, S, color="red", linewidth=2.5, linestyle="-", label="sine")
 
-ax = plt.gca()
-ax.spines["right"].set_color("none")
-ax.spines["top"].set_color("none")
-ax.xaxis.set_ticks_position("bottom")
-ax.spines["bottom"].set_position(("data", 0))
-ax.yaxis.set_ticks_position("left")
-ax.spines["left"].set_position(("data", 0))
+ax.spines[["right", "top"]].set_visible(False)
+ax.spines[["left", "bottom"]].set_position("zero")
 
-plt.xlim(X.min() * 1.1, X.max() * 1.1)
-plt.xticks(
+
+ax.set_xlim(X.min() * 1.1, X.max() * 1.1)
+ax.set_xticks(
     [-np.pi, -np.pi / 2, 0, np.pi / 2, np.pi],
     [r"$-\pi$", r"$-\pi/2$", r"$0$", r"$+\pi/2$", r"$+\pi$"],
 )
 
-plt.ylim(C.min() * 1.1, C.max() * 1.1)
-plt.yticks([-1, +1], [r"$-1$", r"$+1$"])
+ax.set_ylim(C.min() * 1.1, C.max() * 1.1)
+ax.set_yticks([-1, +1], [r"$-1$", r"$+1$"])
 
 t = 2 * np.pi / 3
-plt.plot([t, t], [0, np.cos(t)], color="blue", linewidth=1.5, linestyle="--")
-plt.scatter(
+ax.plot([t, t], [0, np.cos(t)], color="blue", linewidth=1.5, linestyle="--")
+ax.scatter(
     [
         t,
     ],
@@ -47,7 +42,7 @@ plt.scatter(
     50,
     color="blue",
 )
-plt.annotate(
+ax.annotate(
     r"$sin(\frac{2\pi}{3})=\frac{\sqrt{3}}{2}$",
     xy=(t, np.sin(t)),
     xycoords="data",
@@ -57,8 +52,8 @@ plt.annotate(
     arrowprops={"arrowstyle": "->", "connectionstyle": "arc3,rad=.2"},
 )
 
-plt.plot([t, t], [0, np.sin(t)], color="red", linewidth=1.5, linestyle="--")
-plt.scatter(
+ax.plot([t, t], [0, np.sin(t)], color="red", linewidth=1.5, linestyle="--")
+ax.scatter(
     [
         t,
     ],
@@ -68,7 +63,7 @@ plt.scatter(
     50,
     color="red",
 )
-plt.annotate(
+ax.annotate(
     r"$cos(\frac{2\pi}{3})=-\frac{1}{2}$",
     xy=(t, np.cos(t)),
     xycoords="data",
@@ -78,6 +73,6 @@ plt.annotate(
     arrowprops={"arrowstyle": "->", "connectionstyle": "arc3,rad=.2"},
 )
 
-plt.legend(loc="upper left")
+ax.legend(loc="upper left")
 
 plt.show()

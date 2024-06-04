@@ -6,7 +6,6 @@ A plotting example which can be improved with a few simple tweaks
 """
 
 import numpy as np
-import matplotlib
 
 import matplotlib.pyplot as plt
 

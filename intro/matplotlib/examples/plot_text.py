@@ -20,7 +20,8 @@ eqs.append(r"$\int_{-\infty}^\infty e^{-x^2}dx=\sqrt{\pi}$")
 eqs.append(r"$E = mc^2 = \sqrt{{m_0}^2c^4 + p^2c^2}$")
 eqs.append(r"$F_G = G\frac{m_1m_2}{r^2}$")
 
-plt.axes([0.025, 0.025, 0.95, 0.95])
+fig, ax = plt.subplots(layout="constrained")
+ax.set(xticks=[], yticks=[])
 
 rng = np.random.default_rng()
 
@@ -30,7 +31,7 @@ for i in range(24):
     size = np.random.uniform(12, 32)
     x, y = np.random.uniform(0, 1, 2)
     alpha = np.random.uniform(0.25, 0.75)
-    plt.text(
+    ax.text(
         x,
         y,
         eq,
@@ -38,11 +39,9 @@ for i in range(24):
         va="center",
         color="#11557c",
         alpha=alpha,
-        transform=plt.gca().transAxes,
+        transform=ax.transAxes,
         fontsize=size,
         clip_on=True,
     )
-plt.xticks([])
-plt.yticks([])
 
 plt.show()

@@ -7,17 +7,10 @@ An example showing vertical arrangement of subplots with matplotlib.
 
 import matplotlib.pyplot as plt
 
+fig, axs = plt.subplots(2, 1, figsize=(6, 4), layout="constrained")
 
-plt.figure(figsize=(6, 4))
-plt.subplot(1, 2, 1)
-plt.xticks([])
-plt.yticks([])
-plt.text(0.5, 0.5, "subplot(1,2,1)", ha="center", va="center", size=24, alpha=0.5)
+for i, ax in enumerate(axs):
+    ax.text(0.5, 0.5, f"subplot(2,1,{i})", ha="center", va="center", size=24, alpha=0.5)
+    ax.set(xticks=[], yticks=[])
 
-plt.subplot(1, 2, 2)
-plt.xticks([])
-plt.yticks([])
-plt.text(0.5, 0.5, "subplot(1,2,2)", ha="center", va="center", size=24, alpha=0.5)
-
-plt.tight_layout()
 plt.show()

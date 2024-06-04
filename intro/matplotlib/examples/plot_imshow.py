@@ -23,6 +23,5 @@ fig, ax = plt.subplots(layout="constrained")
 im = ax.imshow(Z, interpolation="nearest", cmap="bone", origin="lower")
 fig.colorbar(im, ax=ax, shrink=0.92)
 
-ax.set_xticks([])
-ax.set_yticks([])
+ax.set(xticks=[], yticks=[])
 plt.show()

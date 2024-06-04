@@ -8,14 +8,14 @@ Demo 3D plotting with matplotlib and style the figure.
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import axes3d
 
-ax = plt.figure().add_subplot(projection="3d")
+fig = plt.figure()
+ax = fig.add_subplot(projection="3d")
+
 X, Y, Z = axes3d.get_test_data(0.05)
 cset = ax.contourf(X, Y, Z)
 ax.clabel(cset, fontsize=9, inline=1)
 
-ax.set_xticks([])
-ax.set_yticks([])
-ax.set_zticks([])
+ax.set(xticks=[], yticks=[], zticks=[])
 
 
 ax.text2D(
@@ -27,7 +27,7 @@ ax.text2D(
     bbox={"facecolor": "white", "alpha": 1.0},
     family="DejaVu Sans",
     size="x-large",
-    transform=plt.gca().transAxes,
+    transform=ax.transAxes,
 )
 
 ax.text2D(
@@ -38,7 +38,7 @@ ax.text2D(
     verticalalignment="top",
     family="DejaVu Sans",
     size="medium",
-    transform=plt.gca().transAxes,
+    transform=ax.transAxes,
 )
 
 plt.show()

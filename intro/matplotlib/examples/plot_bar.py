@@ -24,9 +24,7 @@ for x, y in zip(X, Y1, strict=True):
 for x, y in zip(X, Y2, strict=True):
     ax.text(x + 0.4, -y - 0.05, f"{y:.2f}", ha="center", va="top")
 
-ax.set_xlim(-0.5, n)
-ax.set_xticks([])
-ax.set_ylim(-1.25, 1.25)
-ax.set_yticks([])
+ax.set(xlim=(-0.5, n), xticks=[])
+ax.set(ylim=(-1.25, 1.25), yticks=[])
 
 plt.show()

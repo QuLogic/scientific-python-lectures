@@ -25,6 +25,5 @@ ax.contourf(X, Y, f(X, Y), 8, alpha=0.75, cmap=plt.cm.hot)
 C = ax.contour(X, Y, f(X, Y), 8, colors="black", linewidths=0.5)
 ax.clabel(C, inline=1, fontsize=10)
 
-ax.set_xticks([])
-ax.set_yticks([])
+ax.set(xticks=[], yticks=[])
 plt.show()

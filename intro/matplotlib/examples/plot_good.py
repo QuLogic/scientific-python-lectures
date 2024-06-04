@@ -6,7 +6,6 @@ Demoing some simple features of matplotlib
 """
 
 import numpy as np
-import matplotlib
 
 import matplotlib.pyplot as plt
 

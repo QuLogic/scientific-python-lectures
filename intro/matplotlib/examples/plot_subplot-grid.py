@@ -7,27 +7,13 @@ An example showing the subplot grid in matplotlib.
 
 import matplotlib.pyplot as plt
 
-plt.figure(figsize=(6, 4))
-plt.subplot(2, 2, 1)
-plt.xticks([])
-plt.yticks([])
-plt.text(0.5, 0.5, "subplot(2,2,1)", ha="center", va="center", size=20, alpha=0.5)
+fig, axs = plt.subplots(2, 2, figsize=(6, 4), layout="constrained")
 
-plt.subplot(2, 2, 2)
-plt.xticks([])
-plt.yticks([])
-plt.text(0.5, 0.5, "subplot(2,2,2)", ha="center", va="center", size=20, alpha=0.5)
+for i, ax_row in enumerate(axs):
+    for j, ax in enumerate(ax_row):
+        ax.text(
+            0.5, 0.5, f"axs[{i}][{j}]", ha="center", va="center", size=20, alpha=0.5
+        )
+        ax.set(xticks=[], yticks=[])
 
-plt.subplot(2, 2, 3)
-plt.xticks([])
-plt.yticks([])
-
-plt.text(0.5, 0.5, "subplot(2,2,3)", ha="center", va="center", size=20, alpha=0.5)
-
-plt.subplot(2, 2, 4)
-plt.xticks([])
-plt.yticks([])
-plt.text(0.5, 0.5, "subplot(2,2,4)", ha="center", va="center", size=20, alpha=0.5)
-
-plt.tight_layout()
 plt.show()

@@ -10,24 +10,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-fig = plt.figure(figsize=(8, 5))
-axes = plt.subplot(111)
+fig, ax = plt.subplots(figsize=(8, 5))
 
 n = 5
 Z = np.zeros((n, 4))
 X = np.linspace(0, 2, n)
 rng = np.random.default_rng()
 Y = rng.random((n, 4))
-plt.boxplot(Y)
 
-plt.xticks([])
-plt.yticks([])
+ax.boxplot(Y)
+
+ax.set(xticks=[], yticks=[])
 
 
 # Add a title and a box around it
 from matplotlib.patches import FancyBboxPatch
 
-ax = plt.gca()
 ax.add_patch(
     FancyBboxPatch(
         (-0.05, 0.87),
@@ -38,7 +36,7 @@ ax.add_patch(
         zorder=3,
         facecolor="white",
         alpha=1.0,
-        transform=plt.gca().transAxes,
+        transform=ax.transAxes,
     )
 )
 
@@ -49,7 +47,7 @@ plt.text(
     horizontalalignment="left",
     verticalalignment="top",
     size="xx-large",
-    transform=axes.transAxes,
+    transform=ax.transAxes,
 )
 
 plt.text(
@@ -59,7 +57,7 @@ plt.text(
     horizontalalignment="left",
     verticalalignment="top",
     size="large",
-    transform=axes.transAxes,
+    transform=ax.transAxes,
 )
 
 plt.show()

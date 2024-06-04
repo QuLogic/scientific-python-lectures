@@ -10,20 +10,20 @@ import matplotlib.pyplot as plt
 
 n = 16
 X = np.arange(n)
-Y1 = (1 - X / float(n)) * np.random.uniform(0.5, 1.0, n)
-Y2 = (1 - X / float(n)) * np.random.uniform(0.5, 1.0, n)
-plt.bar(X, Y1, facecolor="#9999ff", edgecolor="white")
-plt.bar(X, -Y2, facecolor="#ff9999", edgecolor="white")
-plt.xlim(-0.5, n)
-plt.xticks([])
-plt.ylim(-1, 1)
-plt.yticks([])
+Y1 = (1 - X / n) * np.random.uniform(0.5, 1.0, n)
+Y2 = (1 - X / n) * np.random.uniform(0.5, 1.0, n)
+
+fig, ax = plt.subplots()
+
+ax.bar(X, Y1, facecolor="#9999ff", edgecolor="white")
+ax.bar(X, -Y2, facecolor="#ff9999", edgecolor="white")
+ax.set(xlim=(-0.5, n), xticks=[])
+ax.set(ylim=(-1, 1), yticks=[])
 
 
 # Add a title and a box around it
 from matplotlib.patches import FancyBboxPatch
 
-ax = plt.gca()
 ax.add_patch(
     FancyBboxPatch(
         (-0.05, 0.87),
@@ -34,28 +34,28 @@ ax.add_patch(
         zorder=3,
         facecolor="white",
         alpha=1.0,
-        transform=plt.gca().transAxes,
+        transform=ax.transAxes,
     )
 )
 
-plt.text(
+ax.text(
     -0.05,
     1.02,
     " Bar Plot:              plt.bar(...)\n",
     horizontalalignment="left",
     verticalalignment="top",
     size="xx-large",
-    transform=plt.gca().transAxes,
+    transform=ax.transAxes,
 )
 
-plt.text(
+ax.text(
     -0.05,
     1.01,
     "\n\n   Make a bar plot with rectangles ",
     horizontalalignment="left",
     verticalalignment="top",
     size="large",
-    transform=plt.gca().transAxes,
+    transform=ax.transAxes,
 )
 
 plt.show()

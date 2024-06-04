@@ -145,8 +145,10 @@ Plotting with default settings
    X = np.linspace(-np.pi, np.pi, 256)
    C, S = np.cos(X), np.sin(X)
 
-   plt.plot(X, C)
-   plt.plot(X, S)
+   fig, ax = plt.subplots()
+
+   ax.plot(X, C)
+   ax.plot(X, S)
 
    plt.show()
 
@@ -176,41 +178,35 @@ that influence the appearance of the plot.
 
 ::
 
-   import numpy as np
-   import matplotlib.pyplot as plt
+    import numpy as np
+    import matplotlib.pyplot as plt
 
-   # Create a figure of size 8x6 inches, 80 dots per inch
-   plt.figure(figsize=(8, 6), dpi=80)
+    # Create a new figure of size 8x6 inches, using 100 dots per inch with one Axes
+    fig, ax = plt.subplots(figsize=(8, 6), dpi=100)
 
-   # Create a new subplot from a grid of 1x1
-   plt.subplot(1, 1, 1)
+    X = np.linspace(-np.pi, np.pi, 256)
+    C, S = np.cos(X), np.sin(X)
 
-   X = np.linspace(-np.pi, np.pi, 256)
-   C, S = np.cos(X), np.sin(X)
+    # Plot cosine using blue color with a continuous line of width 1 point
+    ax.plot(X, C, color="blue", linewidth=1.0, linestyle="-")
 
-   # Plot cosine with a blue continuous line of width 1 (pixels)
-   plt.plot(X, C, color="blue", linewidth=1.0, linestyle="-")
+    # Plot sine using green color with a continuous line of width 1 point
+    ax.plot(X, S, color="green", linewidth=1.0, linestyle="-")
 
-   # Plot sine with a green continuous line of width 1 (pixels)
-   plt.plot(X, S, color="green", linewidth=1.0, linestyle="-")
+    # Set x limits
+    ax.set_xlim(-4.0, 4.0)
 
-   # Set x limits
-   plt.xlim(-4.0, 4.0)
+    # Set x ticks
+    ax.set_xticks(np.linspace(-4, 4, 9))
 
-   # Set x ticks
-   plt.xticks(np.linspace(-4, 4, 9))
+    # Set y limits
+    ax.set_ylim(-1.0, 1.0)
 
-   # Set y limits
-   plt.ylim(-1.0, 1.0)
+    # Set y ticks
+    ax.set_yticks(np.linspace(-1, 1, 5))
 
-   # Set y ticks
-   plt.yticks(np.linspace(-1, 1, 5))
-
-   # Save figure using 72 dots per inch
-   # plt.savefig("exercise_2.png", dpi=72)
-
-   # Show result on screen
-   plt.show()
+    # Show result on screen
+    plt.show()
 
 
 Changing colors and line widths
@@ -237,9 +233,9 @@ Changing colors and line widths
 ::
 
    ...
-   plt.figure(figsize=(10, 6), dpi=80)
-   plt.plot(X, C, color="blue", linewidth=2.5, linestyle="-")
-   plt.plot(X, S, color="red",  linewidth=2.5, linestyle="-")
+   fig, ax = plt.subplots(figsize=(10, 6), dpi=80)
+   ax.plot(X, C, color="blue", linewidth=2.5, linestyle="-")
+   ax.plot(X, S, color="red",  linewidth=2.5, linestyle="-")
    ...
 
 
@@ -253,8 +249,8 @@ Setting limits
 
 .. hint:: Documentation
 
-   * :func:`xlim()` command
-   * :func:`ylim()` command
+   * :func:`Axes.set_xlim()` command
+   * :func:`Axes.set_ylim()` command
 
 .. tip::
 
@@ -266,8 +262,8 @@ Setting limits
 ::
 
    ...
-   plt.xlim(X.min() * 1.1, X.max() * 1.1)
-   plt.ylim(C.min() * 1.1, C.max() * 1.1)
+   ax.set_xlim(X.min() * 1.1, X.max() * 1.1)
+   ax.set_ylim(C.min() * 1.1, C.max() * 1.1)
    ...
 
 
@@ -282,8 +278,8 @@ Setting ticks
 
 .. hint:: Documentation
 
-   * :func:`xticks()` command
-   * :func:`yticks()` command
+   * :func:`Axes.set_xticks()` command
+   * :func:`Axes.set_yticks()` command
    * `Tick container <https://matplotlib.org/users/artists.html#axis-container>`_
    * `Tick locating and formatting <https://matplotlib.org/api/ticker_api.html>`_
 
@@ -298,8 +294,8 @@ Setting ticks
 ::
 
    ...
-   plt.xticks([-np.pi, -np.pi/2, 0, np.pi/2, np.pi])
-   plt.yticks([-1, 0, +1])
+   ax.set_xticks([-np.pi, -np.pi/2, 0, np.pi/2, np.pi])
+   ax.set_yticks([-1, 0, +1])
    ...
 
 
@@ -316,8 +312,8 @@ Setting tick labels
 .. hint:: Documentation
 
    * `Working with text <https://matplotlib.org/users/index_text.html>`_
-   * :func:`~xticks()` command
-   * :func:`~yticks()` command
+   * :func:`~matplotlib.axes.Axes.set_xticks()` command
+   * :func:`~matplotlib.axes.Axes.set_yticks()` command
    * :meth:`~matplotlib.axes.Axes.set_xticklabels()`
    * :meth:`~matplotlib.axes.Axes.set_yticklabels()`
 
@@ -335,11 +331,11 @@ Setting tick labels
 ::
 
    ...
-   plt.xticks([-np.pi, -np.pi/2, 0, np.pi/2, np.pi],
-             [r'$-\pi$', r'$-\pi/2$', r'$0$', r'$+\pi/2$', r'$+\pi$'])
+   ax.set_xticks([-np.pi, -np.pi/2, 0, np.pi/2, np.pi],
+                 [r'$-\pi$', r'$-\pi/2$', r'$0$', r'$+\pi/2$', r'$+\pi$'])
 
-   plt.yticks([-1, 0, +1],
-             [r'$-1$', r'$0$', r'$+1$'])
+   ax.set_yticks([-1, 0, +1],
+                 [r'$-1$', r'$0$', r'$+1$'])
    ...
 
 
@@ -374,13 +370,8 @@ Moving spines
 ::
 
    ...
-   ax = plt.gca()  # gca stands for 'get current axis'
-   ax.spines['right'].set_color('none')
-   ax.spines['top'].set_color('none')
-   ax.xaxis.set_ticks_position('bottom')
-   ax.spines['bottom'].set_position(('data',0))
-   ax.yaxis.set_ticks_position('left')
-   ax.spines['left'].set_position(('data',0))
+   ax.spines[['right', 'top']].set_visible(False)
+   ax.spines[['bottom', 'left']].set_position("zero")
    ...
 
 
@@ -411,10 +402,10 @@ Adding a legend
 ::
 
    ...
-   plt.plot(X, C, color="blue", linewidth=2.5, linestyle="-", label="cosine")
-   plt.plot(X, S, color="red",  linewidth=2.5, linestyle="-", label="sine")
+   ax.plot(X, C, color="blue", linewidth=2.5, linestyle="-", label="cosine")
+   ax.plot(X, S, color="red",  linewidth=2.5, linestyle="-", label="sine")
 
-   plt.legend(loc='upper left')
+   ax.legend(loc='upper left')
    ...
 
 
@@ -448,21 +439,21 @@ Annotate some points
    ...
 
    t = 2 * np.pi / 3
-   plt.plot([t, t], [0, np.cos(t)], color='blue', linewidth=2.5, linestyle="--")
-   plt.scatter([t, ], [np.cos(t), ], 50, color='blue')
+   ax.plot([t, t], [0, np.cos(t)], color='blue', linewidth=2.5, linestyle="--")
+   ax.scatter([t, ], [np.cos(t), ], 50, color='blue')
 
-   plt.annotate(r'$cos(\frac{2\pi}{3})=-\frac{1}{2}$',
-                xy=(t, np.cos(t)), xycoords='data',
-                xytext=(-90, -50), textcoords='offset points', fontsize=16,
-                arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
+   ax.annotate(r'$cos(\frac{2\pi}{3})=-\frac{1}{2}$',
+               xy=(t, np.cos(t)), xycoords='data',
+               xytext=(-90, -50), textcoords='offset points', fontsize=16,
+               arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
 
-   plt.plot([t, t],[0, np.sin(t)], color='red', linewidth=2.5, linestyle="--")
-   plt.scatter([t, ],[np.sin(t), ], 50, color='red')
+   ax.plot([t, t],[0, np.sin(t)], color='red', linewidth=2.5, linestyle="--")
+   ax.scatter([t, ],[np.sin(t), ], 50, color='red')
 
-   plt.annotate(r'$sin(\frac{2\pi}{3})=\frac{\sqrt{3}}{2}$',
-                xy=(t, np.sin(t)), xycoords='data',
-                xytext=(+10, +30), textcoords='offset points', fontsize=16,
-                arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
+   ax.annotate(r'$sin(\frac{2\pi}{3})=\frac{\sqrt{3}}{2}$',
+               xy=(t, np.sin(t)), xycoords='data',
+               xytext=(+10, +30), textcoords='offset points', fontsize=16,
+               arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))
    ...
 
 
@@ -619,8 +610,7 @@ Tick Locators
 Tick locators control the positions of the ticks. They are set as
 follows::
 
-    ax = plt.gca()
-    ax.xaxis.set_major_locator(eval(locator))
+    ax.xaxis.set_major_locator(locator)
 
 There are several locators for different kind of requirements:
 
@@ -705,8 +695,10 @@ care of filled areas:
    X = np.linspace(-np.pi, np.pi, n)
    Y = np.sin(2 * X)
 
-   plt.plot(X, Y + 1, color='blue', alpha=1.00)
-   plt.plot(X, Y - 1, color='blue', alpha=1.00)
+   fig, ax = plt.subplots()
+
+   ax.plot(X, Y + 1, color='blue', alpha=1.00)
+   ax.plot(X, Y - 1, color='blue', alpha=1.00)
 
 Click on the figure for solution.
 
@@ -734,7 +726,9 @@ care of marker size, color and transparency.
    X = rng.normal(0,1,n)
    Y = rng.normal(0,1,n)
 
-   plt.scatter(X,Y)
+   fig, ax = plt.subplots()
+
+   ax.scatter(X,Y)
 
 Click on figure for solution.
 
@@ -764,13 +758,15 @@ adding labels for red bars.
    Y1 = (1 - X / float(n)) * rng.uniform(0.5, 1.0, n)
    Y2 = (1 - X / float(n)) * rng.uniform(0.5, 1.0, n)
 
-   plt.bar(X, +Y1, facecolor='#9999ff', edgecolor='white')
-   plt.bar(X, -Y2, facecolor='#ff9999', edgecolor='white')
+   fig, ax = plt.subplots()
+
+   ax.bar(X, +Y1, facecolor='#9999ff', edgecolor='white')
+   ax.bar(X, -Y2, facecolor='#ff9999', edgecolor='white')
 
    for x, y in zip(X, Y1):
-       plt.text(x + 0.4, y + 0.05, '%.2f' % y, ha='center', va='bottom')
+       ax.text(x + 0.4, y + 0.05, '%.2f' % y, ha='center', va='bottom')
 
-   plt.ylim(-1.25, +1.25)
+   ax.set_ylim(-1.25, +1.25)
 
 Click on figure for solution.
 
@@ -801,8 +797,10 @@ care of the colormap (see `Colormaps`_ below).
    y = np.linspace(-3, 3, n)
    X, Y = np.meshgrid(x, y)
 
-   plt.contourf(X, Y, f(X, Y), 8, alpha=.75, cmap='jet')
-   C = plt.contour(X, Y, f(X, Y), 8, colors='black', linewidth=.5)
+   fig, ax = plt.subplots()
+
+   ax.contourf(X, Y, f(X, Y), 8, alpha=.75, cmap='jet')
+   C = ax.contour(X, Y, f(X, Y), 8, colors='black', linewidth=.5)
 
 Click on figure for solution.
 
@@ -835,7 +833,10 @@ care of colormap, image interpolation and origin.
    x = np.linspace(-3, 3, 4 * n)
    y = np.linspace(-3, 3, 3 * n)
    X, Y = np.meshgrid(x, y)
-   plt.imshow(f(X, Y))
+
+   fig, ax = plt.subplots()
+
+   ax.imshow(f(X, Y))
 
 Click on the figure for the solution.
 
@@ -860,7 +861,10 @@ care of colors and slices size.
 
    rng = np.random.default_rng()
    Z = rng.uniform(0, 1, 20)
-   plt.pie(Z)
+
+   fig, ax = plt.subplots()
+
+   ax.pie(Z)
 
 Click on the figure for the solution.
 
@@ -886,7 +890,10 @@ care of colors and orientations.
 
    n = 8
    X, Y = np.mgrid[0:n, 0:n]
-   plt.quiver(X, Y)
+
+   fig, ax = plt.subplots()
+
+   ax.quiver(X, Y)
 
 Click on figure for solution.
 
@@ -905,11 +912,13 @@ care of line styles.
 
 ::
 
-   axes = plt.gca()
-   axes.set_xlim(0, 4)
-   axes.set_ylim(0, 3)
-   axes.set_xticklabels([])
-   axes.set_yticklabels([])
+
+   fig, ax = plt.subplots()
+
+   ax.set_xlim(0, 4)
+   ax.set_ylim(0, 3)
+   ax.set_xticklabels([])
+   ax.set_yticklabels([])
 
 
 Click on figure for solution.
@@ -932,9 +941,9 @@ Starting from the code below, try to reproduce the graphic.
 
 ::
 
-   plt.subplot(2, 2, 1)
-   plt.subplot(2, 2, 3)
-   plt.subplot(2, 2, 4)
+   fig.subplot(2, 2, 1)
+   fig.subplot(2, 2, 3)
+   fig.subplot(2, 2, 4)
 
 Click on figure for solution.
 
@@ -957,14 +966,14 @@ Starting from the code below, try to reproduce the graphic.
 
 ::
 
-   plt.axes([0, 0, 1, 1])
+   fig, ax = plt.subplots(layout="constrained")
 
    N = 20
    theta = np.arange(0., 2 * np.pi, 2 * np.pi / N)
    rng = np.random.default_rng()
    radii = 10 * rng.random(N)
    width = np.pi / 4 * rng.random(N)
-   bars = plt.bar(theta, radii, width=width, bottom=0.0)
+   bars = ax.bar(theta, radii, width=width, bottom=0.0)
 
    for r, bar in zip(radii, bars):
        bar.set_facecolor(plt.cm.jet(r / 10.))
@@ -985,7 +994,7 @@ Starting from the code below, try to reproduce the graphic.
 
 .. hint::
 
-   You need to use :func:`contourf()`
+   You need to use :func:`Axes3D.contourf()`
 
 
 ::
@@ -993,7 +1002,8 @@ Starting from the code below, try to reproduce the graphic.
    from mpl_toolkits.mplot3d import Axes3D
 
    fig = plt.figure()
-   ax = Axes3D(fig)
+   ax = fig.subplot(projection="3d")
+
    X = np.arange(-4, 4, 0.25)
    Y = np.arange(-4, 4, 0.25)
    X, Y = np.meshgrid(X, Y)

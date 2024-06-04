@@ -14,19 +14,19 @@ rng = np.random.default_rng()
 Y1 = (1 - X / float(n)) * rng.uniform(0.5, 1.0, n)
 Y2 = (1 - X / float(n)) * rng.uniform(0.5, 1.0, n)
 
-plt.axes([0.025, 0.025, 0.95, 0.95])
-plt.bar(X, +Y1, facecolor="#9999ff", edgecolor="white")
-plt.bar(X, -Y2, facecolor="#ff9999", edgecolor="white")
+fig, ax = plt.subplots(layout="constrained")
+ax.bar(X, +Y1, facecolor="#9999ff", edgecolor="white")
+ax.bar(X, -Y2, facecolor="#ff9999", edgecolor="white")
 
 for x, y in zip(X, Y1, strict=True):
-    plt.text(x + 0.4, y + 0.05, f"{y:.2f}", ha="center", va="bottom")
+    ax.text(x + 0.4, y + 0.05, f"{y:.2f}", ha="center", va="bottom")
 
 for x, y in zip(X, Y2, strict=True):
-    plt.text(x + 0.4, -y - 0.05, f"{y:.2f}", ha="center", va="top")
+    ax.text(x + 0.4, -y - 0.05, f"{y:.2f}", ha="center", va="top")
 
-plt.xlim(-0.5, n)
-plt.xticks([])
-plt.ylim(-1.25, 1.25)
-plt.yticks([])
+ax.set_xlim(-0.5, n)
+ax.set_xticks([])
+ax.set_ylim(-1.25, 1.25)
+ax.set_yticks([])
 
 plt.show()

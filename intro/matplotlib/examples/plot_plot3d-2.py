@@ -13,8 +13,8 @@ X, Y, Z = axes3d.get_test_data(0.05)
 cset = ax.contourf(X, Y, Z)
 ax.clabel(cset, fontsize=9, inline=1)
 
-plt.xticks([])
-plt.yticks([])
+ax.set_xticks([])
+ax.set_yticks([])
 ax.set_zticks([])
 
 

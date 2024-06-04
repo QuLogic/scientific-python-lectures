@@ -19,12 +19,12 @@ x = np.linspace(-3, 3, n)
 y = np.linspace(-3, 3, n)
 X, Y = np.meshgrid(x, y)
 
-plt.axes([0.025, 0.025, 0.95, 0.95])
+fig, ax = plt.subplots(layout="constrained")
 
-plt.contourf(X, Y, f(X, Y), 8, alpha=0.75, cmap=plt.cm.hot)
-C = plt.contour(X, Y, f(X, Y), 8, colors="black", linewidths=0.5)
-plt.clabel(C, inline=1, fontsize=10)
+ax.contourf(X, Y, f(X, Y), 8, alpha=0.75, cmap=plt.cm.hot)
+C = ax.contour(X, Y, f(X, Y), 8, colors="black", linewidths=0.5)
+ax.clabel(C, inline=1, fontsize=10)
 
-plt.xticks([])
-plt.yticks([])
+ax.set_xticks([])
+ax.set_yticks([])
 plt.show()

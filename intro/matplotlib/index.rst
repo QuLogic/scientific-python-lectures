@@ -125,7 +125,7 @@ Plotting with default settings
 .. hint:: Documentation
 
    * `plot tutorial <https://matplotlib.org/users/pyplot_tutorial.html>`_
-   * :func:`~plot()` command
+   * :meth:`~matplotlib.axes.Axes.plot()` command
 
 .. tip::
 
@@ -249,8 +249,8 @@ Setting limits
 
 .. hint:: Documentation
 
-   * :func:`Axes.set_xlim()` command
-   * :func:`Axes.set_ylim()` command
+   * :meth:`~matplotlib.axes.Axes.set_xlim()` command
+   * :meth:`~matplotlib.axes.Axes.set_ylim()` command
 
 .. tip::
 
@@ -278,8 +278,8 @@ Setting ticks
 
 .. hint:: Documentation
 
-   * :func:`Axes.set_xticks()` command
-   * :func:`Axes.set_yticks()` command
+   * :meth:`~matplotlib.axes.Axes.set_xticks()` command
+   * :meth:`~matplotlib.axes.Axes.set_yticks()` command
    * `Tick container <https://matplotlib.org/users/artists.html#axis-container>`_
    * `Tick locating and formatting <https://matplotlib.org/api/ticker_api.html>`_
 
@@ -312,8 +312,8 @@ Setting tick labels
 .. hint:: Documentation
 
    * `Working with text <https://matplotlib.org/users/index_text.html>`_
-   * :func:`~matplotlib.axes.Axes.set_xticks()` command
-   * :func:`~matplotlib.axes.Axes.set_yticks()` command
+   * :meth:`~matplotlib.axes.Axes.set_xticks()` command
+   * :meth:`~matplotlib.axes.Axes.set_yticks()` command
    * :meth:`~matplotlib.axes.Axes.set_xticklabels()`
    * :meth:`~matplotlib.axes.Axes.set_yticklabels()`
 
@@ -388,7 +388,7 @@ Adding a legend
 .. hint:: Documentation
 
    * `Legend guide <https://matplotlib.org/users/legend_guide.html>`_
-   * :func:`legend()` command
+   * :meth:`~matplotlib.axes.Axes.legend()` command
    * :mod:`~matplotlib.legend` API
 
 .. tip::
@@ -422,7 +422,7 @@ Annotate some points
 .. hint:: Documentation
 
    * `Annotating axis <https://matplotlib.org/users/annotations_guide.html>`_
-   * :func:`annotate()` command
+   * :meth:`~matplotlib.axes.Axes.annotate()` command
 
 .. tip::
 
@@ -686,7 +686,7 @@ care of filled areas:
 
 .. hint::
 
-   You need to use the :func:`fill_between()` command.
+   You need to use the :meth:`~matplotlib.axes.Axes.fill_between()` command.
 
 
 ::
@@ -785,7 +785,7 @@ care of the colormap (see `Colormaps`_ below).
 
 .. hint::
 
-   You need to use the :func:`clabel()` command.
+   You need to use the :meth:`~matplotlib.axes.Axes.clabel()` command.
 
 ::
 
@@ -821,7 +821,7 @@ care of colormap, image interpolation and origin.
 .. hint::
 
    You need to take care of the ``origin`` of the image in the imshow command and
-   use a :func:`colorbar()`
+   use a :meth:`~matplotlib.figure.Figure.colorbar()`
 
 
 ::
@@ -959,14 +959,15 @@ Polar Axis
 
 .. hint::
 
-   You only need to modify the ``axes`` line
+   You only need to modify the ``add_subplot`` line
 
 Starting from the code below, try to reproduce the graphic.
 
 
 ::
 
-   fig, ax = plt.subplots(layout="constrained")
+   fig = plt.figure(layout="constrained")
+   ax = fig.add_subplot()
 
    N = 20
    theta = np.arange(0., 2 * np.pi, 2 * np.pi / N)
@@ -976,7 +977,7 @@ Starting from the code below, try to reproduce the graphic.
    bars = ax.bar(theta, radii, width=width, bottom=0.0)
 
    for r, bar in zip(radii, bars):
-       bar.set_facecolor(plt.cm.jet(r / 10.))
+       bar.set_facecolor(plt.cm.viridis(r / 10.0))
        bar.set_alpha(0.5)
 
 Click on figure for solution.
@@ -994,7 +995,7 @@ Starting from the code below, try to reproduce the graphic.
 
 .. hint::
 
-   You need to use :func:`Axes3D.contourf()`
+   You need to use :meth:`Axes3D.contourf()`
 
 
 ::

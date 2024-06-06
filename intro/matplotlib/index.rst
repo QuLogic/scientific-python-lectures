@@ -29,32 +29,6 @@ Introduction
     many formats.  We are going to explore matplotlib in interactive mode
     covering most common cases.
 
-IPython, Jupyter, and matplotlib modes
----------------------------------------
-
-.. tip::
-
-    The `Jupyter <https://jupyter.org>`_ notebook and the
-    `IPython <https://ipython.org/>`_ enhanced interactive Python, are
-    tuned for the scientific-computing workflow in Python,
-    in combination with Matplotlib:
-
-For interactive matplotlib sessions, turn on the **matplotlib mode**
-
-:IPython console:
-
-  When using the IPython console, use::
-
-    In [1]: %matplotlib
-
-:Jupyter notebook:
-
-  In the notebook, insert, **at the beginning of the
-  notebook** the following `magic
-  <https://ipython.readthedocs.io/en/stable/interactive/magics.html>`_::
-
-    %matplotlib inline
-
 pyplot
 ------
 
@@ -124,7 +98,7 @@ Plotting with default settings
 
 .. hint:: Documentation
 
-   * `plot tutorial <https://matplotlib.org/users/pyplot_tutorial.html>`_
+   * `Quick start guide <https://matplotlib.org/stable/users/explain/quick_start.html>`_
    * :meth:`~matplotlib.axes.Axes.plot()` command
 
 .. tip::
@@ -163,7 +137,7 @@ Instantiating defaults
 
 .. hint:: Documentation
 
-   *  `Customizing matplotlib <https://matplotlib.org/users/customizing.html>`_
+   *  `Customizing matplotlib <https://matplotlib.org/stable/users/explain/customizing.html>`_
 
 In the script below, we've instantiated (and commented) all the figure settings
 that influence the appearance of the plot.
@@ -219,7 +193,7 @@ Changing colors and line widths
 
 .. hint:: Documentation
 
-   * `Controlling line properties <https://matplotlib.org/users/pyplot_tutorial.html#controlling-line-properties>`_
+   * `Styling Artists <https://matplotlib.org/stable/users/explain/quick_start.html#styling-artists>`_
    * :class:`~matplotlib.lines.Line2D` API
 
 .. tip::
@@ -280,8 +254,7 @@ Setting ticks
 
    * :meth:`~matplotlib.axes.Axes.set_xticks()` command
    * :meth:`~matplotlib.axes.Axes.set_yticks()` command
-   * `Tick container <https://matplotlib.org/users/artists.html#axis-container>`_
-   * `Tick locating and formatting <https://matplotlib.org/api/ticker_api.html>`_
+   * `Tick locating and formatting <https://matplotlib.org/stable/api/ticker_api.html>`_
 
 .. tip::
 
@@ -311,7 +284,7 @@ Setting tick labels
 
 .. hint:: Documentation
 
-   * `Working with text <https://matplotlib.org/users/index_text.html>`_
+   * `Working with text <https://matplotlib.org/stable/users/explain/text/index.html>`_
    * :meth:`~matplotlib.axes.Axes.set_xticks()` command
    * :meth:`~matplotlib.axes.Axes.set_yticks()` command
    * :meth:`~matplotlib.axes.Axes.set_xticklabels()`
@@ -352,8 +325,6 @@ Moving spines
 .. hint:: Documentation
 
    * :mod:`~matplotlib.spines` API
-   * `Axis container <https://matplotlib.org/users/artists.html#axis-container>`_
-   * `Transformations tutorial <https://matplotlib.org/users/transforms_tutorial.html>`_
 
 .. tip::
 
@@ -379,7 +350,7 @@ Moving spines
 Adding a legend
 ---------------
 
-.. image:: auto_examples/exercises/images/sphx_glr_plot_exercise_8_001.png
+.. image:: auto_examples/exercises/images/sphx_glr_plot_exercise_8_001`.png
    :align: right
    :scale: 35
    :target: auto_examples/exercises/plot_exercise_8.html
@@ -387,7 +358,7 @@ Adding a legend
 
 .. hint:: Documentation
 
-   * `Legend guide <https://matplotlib.org/users/legend_guide.html>`_
+   * `Legend guide <https://matplotlib.org/stable/users/explain/axes/legend_guide.html>`_
    * :meth:`~matplotlib.axes.Axes.legend()` command
    * :mod:`~matplotlib.legend` API
 
@@ -421,7 +392,7 @@ Annotate some points
 
 .. hint:: Documentation
 
-   * `Annotating axis <https://matplotlib.org/users/annotations_guide.html>`_
+   * `Annotations <https://matplotlib.org/stable/users/explain/text/annotations.html>`_
    * :meth:`~matplotlib.axes.Axes.annotate()` command
 
 .. tip::
@@ -1030,7 +1001,7 @@ Try to do the same from scratch !
 .. hint::
 
    Have a look at the `matplotlib logo
-   <https://matplotlib.org/examples/api/logo2.html>`_.
+   <https://matplotlib.org/stable/gallery/misc/logos2.html>`_.
 
 
 Click on figure for solution.
@@ -1068,13 +1039,13 @@ Tutorials
     - Working with multiple figures and axes
     - Working with text
 
-  * `Image tutorial <https://matplotlib.org/users/image_tutorial.html>`_
+  * `Image tutorial <https://matplotlib.org/stable/tutorials/images.html>`_
 
     - Startup commands
     - Importing image data into NumPy arrays
     - Plotting NumPy arrays as images
 
-  * `Text tutorial <https://matplotlib.org/users/index_text.html>`_
+  * `Text tutorial <https://matplotlib.org/stable/users/explain/text/index.html>`_
 
     - Text introduction
     - Basic text commands
@@ -1083,7 +1054,7 @@ Tutorials
     - Text rendering With LaTeX
     - Annotating text
 
-  * `Artist tutorial <https://matplotlib.org/users/artists.html>`_
+  * `Artist tutorial <https://matplotlib.org/stable/tutorials/artists.html>`_
 
     - Introduction
     - Customizing your objects
@@ -1093,13 +1064,13 @@ Tutorials
     - Axis containers
     - Tick containers
 
-  * `Path tutorial <https://matplotlib.org/users/path_tutorial.html>`_
+  * `Path tutorial <https://matplotlib.org/stable/users/explain/artists/paths.html>`_
 
     - Introduction
     - Bézier example
     - Compound paths
 
-  * `Transforms tutorial <https://matplotlib.org/users/transforms_tutorial.html>`_
+  * `Transforms tutorial <https://matplotlib.org/stable/users/explain/artists/transforms_tutorial.html>`_
 
     - Introduction
     - Data coordinates
@@ -1115,17 +1086,10 @@ Matplotlib documentation
 
 .. hlist::
 
-  * `User guide <https://matplotlib.org/users/index.html>`_
-
-  * `FAQ <https://matplotlib.org/faq/index.html>`_
-
-    - Installation
-    - Usage
-    - How-To
-    - Troubleshooting
-    - Environment Variables
-
-  * `Screenshots <https://matplotlib.org/users/screenshots.html>`_
+  * `User guide <https://matplotlib.org/stable/users/index.html>`_
+  * `Tutorials <https://matplotlib.org/stable/tutorials/index.html>`_
+  * `Examples <https://matplotlib.org/stable/gallery/index.html>`_
+  * `Reference <https://matplotlib.org/stable/api/index.html>`_
 
 
 Code documentation
@@ -1153,19 +1117,9 @@ from within a python session:
 Galleries
 ---------
 
-The `matplotlib gallery <https://matplotlib.org/gallery.html>`_ is
+The `matplotlib gallery <https://matplotlib.org/stable/gallery/index.html>`_ is
 also incredibly useful when you search how to render a given graphic. Each
 example comes with its source.
-
-
-Mailing lists
---------------
-
-Finally, there is a `user mailing list
-<https://mail.python.org/mailman/listinfo/matplotlib-users>`_ where you can
-ask for help and a `developers mailing list
-<https://mail.python.org/mailman/listinfo/matplotlib-devel>`_ that is more
-technical.
 
 
 Quick references
@@ -1260,7 +1214,7 @@ Colormaps
 All colormaps can be reversed by appending ``_r``. For instance, ``gray_r`` is
 the reverse of ``gray``.
 
-If you want to know more about colormaps, check the `documentation on Colormaps in matplotlib <https://matplotlib.org/tutorials/colors/colormaps.html>`_.
+If you want to know more about colormaps, check the `documentation on Colormaps in matplotlib <https://matplotlib.org/stable/users/explain/colors/colormaps.html>`_.
 
 .. image:: auto_examples/options/images/sphx_glr_plot_colormaps_001.png
    :scale: 80
